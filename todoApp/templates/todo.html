@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Todo App</title>
+  </head>
+  <body>
+    <p>This is the todo page</p>
+    <ul>
+      {% for todo_item in all_items %}
+        <li>{{ todo_item.content }}
+          <form class="" action="/deleteTodo/{{ todo_item.id }}/"
+            style = "display: inline;"
+            method="post">
+            {% csrf_token %}
+            <input type=submit name="" value="X">
+          </form>
+
+        </li>
+      {% endfor %}
+    </ul>
+
+    <form class="" action="/addTodo/" method="post">
+      {% csrf_token %}
+      <input type="text" name="content" value="" placeholder="Add your tasks here...">
+      <input type="submit" name="" value="Add">
+    </form>
+  </body>
+</html>
